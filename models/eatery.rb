@@ -7,12 +7,13 @@ class Eatery
   def initialize(options)
     @id = nil || options['id'].to_i
     @name = options['name']
+
   end
 
   def save()
 
     sql = "INSERT INTO eateries(name)
-    VALUES ('#{ @name }')
+    VALUES ('#{@name}')
      RETURNING *"
 
     results = SqlRunner.run(sql)
