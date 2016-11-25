@@ -20,3 +20,7 @@ def two_for_one(price1, price2)
 end
 
 puts two_for_one(20, 26)
+
+def set_price(price)
+  return price
+end
