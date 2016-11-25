@@ -14,6 +14,7 @@ eatery1 = Eatery.new({
   'name' => 'Place name here'
   })
 eatery1.save
+
 eatery2 = Eatery.new({
   'name' => 'Other Name Here'
   })
@@ -48,7 +49,7 @@ deal1 = Deal.new({
   'deal_price1' => price1.id,
   'deal_price2' => price2.id
   })
-deal1.save
+deal1.save(3)
 
 binding.pry
 nil

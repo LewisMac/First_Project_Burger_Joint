@@ -14,10 +14,12 @@ class Deal
     # @deal_price2 = options['deal_price2']
   end
 
-  def save()
+  def save(day_id)
 
-    sql = "INSERT INTO deals(deal_type, burger_id, eatery_id)
-    VALUES ('#{@deal_type}', '#{@burger_id}', '#{@eatery_id}')
+    day = Day.all["#{day_id}".to_i]
+
+    sql = "INSERT INTO deals(deal_type, day, burger_id, eatery_id)
+    VALUES ('#{@deal_type}', '#{day}', '#{@burger_id}', '#{@eatery_id}')
      RETURNING *"
 
     results = SqlRunner.run(sql)
@@ -47,7 +49,7 @@ class Deal
     return results.map { |hash| Deal.new( hash ) }
   end
 
-
+  
 
   def self.delete_all
     sql = "DELETE FROM deals"

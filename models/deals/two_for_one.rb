@@ -1,13 +1,28 @@
+require('pry-byebug')
 
-class TwoForOne
+class XForY
 
-  # def self.X_for_Y(x, y, options)
+def self.x_for_y(x, y, options)
+  total_cost = 0
 
-  #   prices = []
-  #   prices << price1
-  #   prices << price2
-  #   deal_price = prices.max
-  #   return deal_price
-  # end
+  options.sort!
+  y.times do
+    # binding.pry
+    total_cost += options.last.to_i
+    options.pop
+  end
+  return total_cost
+end
 
 end
+
+
+
+
+
+
+# def self.X_for_Y(x, y, options)
+
+  #   options = []
+  #   deal_price = options.max
+  #   return deal_price

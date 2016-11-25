@@ -1,4 +1,5 @@
 require('pry-byebug')
+require_relative( '../models/days.rb' )
 
 # def percentage_off(price, percent)
 
@@ -10,17 +11,19 @@ require('pry-byebug')
 
 # puts percentage_off(100, 75)
 
-def two_for_one(price1, price2)
+# def two_for_one(price1, price2)
 
-  prices = []
-  prices << price1
-  prices << price2
-  deal_price = prices.max
-  return deal_price
-end
+#   prices = []
+#   prices << price1
+#   prices << price2
+#   deal_price = prices.max
+#   return deal_price
+# end
 
-puts two_for_one(20, 26)
+# puts two_for_one(20, 26)
 
-def set_price(price)
-  return price
-end
+# def set_price(price)
+#   return price
+# end
+
+puts Day.all[1]
