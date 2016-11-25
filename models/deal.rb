@@ -24,7 +24,29 @@ class Deal
     @id = results.first()['id'].to_i
   end
 
-  def assign_day()
+  def information()
+    array = []
+    sql = 
+    "SELECT name FROM burgers WHERE id=#{@burger_id};"
+    sql2 = 
+    "SELECT name FROM eateries WHERE id=#{@eatery_id};"
+    array << SqlRunner.run(sql).first
+    array << SqlRunner.run(sql2).first
+    return array
+  end
+
+  def self.find( id )
+    sql = "SELECT * FROM deals WHERE id=#{id}"
+    results = SqlRunner.run( sql )
+    return Deal.new( results.first )
+  end
+
+  def self.all()
+    sql = "SELECT * FROM deals"
+    results = SqlRunner.run( sql )
+    return results.map { |hash| Deal.new( hash ) }
+  end
+
 
 
   def self.delete_all

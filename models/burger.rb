@@ -21,6 +21,18 @@ class Burger
     @id = results.first()['id'].to_i
   end
 
+  def self.find( id )
+    sql = "SELECT * FROM burgers WHERE id=#{id}"
+    results = SqlRunner.run( sql )
+    return Burger.new( results.first )
+  end
+
+  def self.all()
+    sql = "SELECT * FROM burgers"
+    results = SqlRunner.run( sql )
+    return results.map { |hash| Burger.new( hash ) }
+  end
+
   def self.delete_all
     sql = "DELETE FROM burgers"
     SqlRunner.run( sql )
