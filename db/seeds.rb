@@ -44,6 +44,7 @@ burger1.save
 deal1 = Deal.new({
   'deal_type' => 'two_for_one',
   'burger_id' => burger1.id,
+  'eatery_id' => eatery1.id,
   'deal_price1' => price1.id,
   'deal_price2' => price2.id
   })

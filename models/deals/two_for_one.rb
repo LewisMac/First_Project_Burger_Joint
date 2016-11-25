@@ -1,13 +1,13 @@
 
 class TwoForOne
 
-  def self.two_for_one(price1, price2)
+  # def self.X_for_Y(x, y, options)
 
-    prices = []
-    prices << price1
-    prices << price2
-    deal_price = prices.max
-    return deal_price
-  end
+  #   prices = []
+  #   prices << price1
+  #   prices << price2
+  #   deal_price = prices.max
+  #   return deal_price
+  # end
 
 end
