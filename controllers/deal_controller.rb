@@ -15,6 +15,6 @@ get '/deals/:id/info' do
   deal_no = Deal.find(params[:id])
 
   @deals = deal_no.information
-  # binding.pry
+  
   erb( :"deals/index" )
 end

@@ -27,6 +27,8 @@ class Burger
     return Burger.new( results.first )
   end
 
+  
+
   def self.all()
     sql = "SELECT * FROM burgers"
     results = SqlRunner.run( sql )

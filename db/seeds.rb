@@ -49,7 +49,13 @@ deal1 = Deal.new({
   'deal_price1' => price1.id,
   'deal_price2' => price2.id
   })
+deal1.save(0)
+deal1.save(1)
+deal1.save(2)
 deal1.save(3)
+deal1.save(4)
+deal1.save(5)
+deal1.save(6)
 
 binding.pry
 nil

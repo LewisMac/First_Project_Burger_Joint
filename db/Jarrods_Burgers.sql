@@ -38,3 +38,19 @@ CREATE TABLE deals(
   -- deal_price1 INT4 references prices(id) ON DELETE CASCADE,
   -- deal_price2 INT4 references prices(id) ON DELETE CASCADE
   );
+
+CREATE TABLE x_for_y_deals(
+  id SERIAL4 primary key,
+  x_value INT4,
+  y_value INT4
+  
+);
+
+  
+
+
+
+
+
+
+

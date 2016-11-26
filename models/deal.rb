@@ -3,7 +3,7 @@ require_relative( 'days.rb' )
 
 class Deal
 
-  attr_reader(:deal_type, :id , :deal_price1, :deal_price2)
+  attr_reader(:deal_type, :id , :day, :deal_price1, :deal_price2)
 
   def initialize( options )
     @id = nil || options['id'].to_i
@@ -16,10 +16,10 @@ class Deal
 
   def save(day_id)
 
-    day = Day.all["#{day_id}".to_i]
+    @day = Day.all["#{day_id}".to_i]
 
     sql = "INSERT INTO deals(deal_type, day, burger_id, eatery_id)
-    VALUES ('#{@deal_type}', '#{day}', '#{@burger_id}', '#{@eatery_id}')
+    VALUES ('#{@deal_type}', '#{@day}', '#{@burger_id}', '#{@eatery_id}')
      RETURNING *"
 
     results = SqlRunner.run(sql)
@@ -39,6 +39,12 @@ class Deal
 
   def self.find( id )
     sql = "SELECT * FROM deals WHERE id=#{id}"
+    results = SqlRunner.run( sql )
+    return Deal.new( results.first )
+  end
+
+  def find_by_day( day )
+    sql = "SELECT * FROM deals WHERE day='#{day}'"
     results = SqlRunner.run( sql )
     return Deal.new( results.first )
   end
