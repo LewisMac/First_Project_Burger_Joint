@@ -15,19 +15,19 @@ end
 get "/:day" do
   @deal_info = []
   @all_deals = []
+  
   deals = Deal.all
 
-  for deal in deals  
-    deals = deal.find_by_day("#{params[:day]}")
-    @deal_info << Hash['name', deals.deal_type]
-    @deal_info << deals.information[0]
-    @deal_info << deals.information[1]
+
+for deal in deals
+    @deal_info << deal.information
+    @deal_info << deal.information
     @all_deals << @deal_info
-  end
+end
 
   @day = params[:day]
 
-  erb( :day)
+  erb( :day )
 end
 
 

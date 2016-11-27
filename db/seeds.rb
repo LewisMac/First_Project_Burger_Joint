@@ -42,6 +42,13 @@ burger1 = Burger.new({
   })
 burger1.save
 
+burger2 = Burger.new({
+  'name' => 'Rawr',
+  'price_id' => price1.id,
+  'eatery_id' => eatery2.id
+  })
+burger2.save
+
 deal1 = Deal.new({
   'deal_type' => 'two_for_one',
   'burger_id' => burger1.id,
@@ -53,8 +60,8 @@ deal1.save(2)
 
 deal2 = Deal.new({
   'deal_type' => 'Other thing',
-  'burger_id' => burger1.id,
-  'eatery_id' => eatery1.id,
+  'burger_id' => burger2.id,
+  'eatery_id' => eatery2.id,
   'deal_price1' => price1.id,
   'deal_price2' => price2.id
   } )
