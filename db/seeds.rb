@@ -48,14 +48,19 @@ deal1 = Deal.new({
   'eatery_id' => eatery1.id,
   'deal_price1' => price1.id,
   'deal_price2' => price2.id
-  })
-deal1.save(0)
-deal1.save(1)
+  } )
 deal1.save(2)
-deal1.save(3)
-deal1.save(4)
-deal1.save(5)
-deal1.save(6)
+
+deal2 = Deal.new({
+  'deal_type' => 'Other thing',
+  'burger_id' => burger1.id,
+  'eatery_id' => eatery1.id,
+  'deal_price1' => price1.id,
+  'deal_price2' => price2.id
+  } )
+deal2.save(2)
+
+
 
 binding.pry
 nil

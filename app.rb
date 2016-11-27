@@ -12,60 +12,22 @@ get '/' do
   erb( :index )
 end
 
-get "/Monday" do
+get "/:day" do
+  @deal_info = []
+  @all_deals = []
   deals = Deal.all
-  for deal in deals  
-    @deals = deal.find_by_day('Monday')
-  end
-  erb( :"days/day1")
-end
 
-get "/Tuesday" do
-  deals = Deal.all
   for deal in deals  
-    @deals = deal.find_by_day('Tuesday')
+    deals = deal.find_by_day("#{params[:day]}")
+    @deal_info << Hash['name', deals.deal_type]
+    @deal_info << deals.information[0]
+    @deal_info << deals.information[1]
+    @all_deals << @deal_info
   end
-  erb( :"days/day2")
-end
 
-get "/Wednesday" do
-  deals = Deal.all
-  for deal in deals  
-    @deals = deal.find_by_day('Wednesday')
-  end
-  erb( :"days/day3")
-end
+  @day = params[:day]
 
-get "/Thursday" do
-  deals = Deal.all
-  for deal in deals  
-    @deals = deal.find_by_day('Thursday')
-  end
-  erb( :"days/day4" )
-end
-
-get "/Friday" do
-  deals = Deal.all
-  for deal in deals  
-    @deals = deal.find_by_day('Friday')
-  end
-  erb( :"days/day5")
-end
-
-get "/Saturday" do
-  deals = Deal.all
-  for deal in deals  
-    @deals = deal.find_by_day('Saturday')
-  end
-  erb( :"days/day6")
-end
-
-get "/Sunday" do
-  deals = Deal.all
-  for deal in deals  
-    @deals = deal.find_by_day('Sunday')
-  end
-  erb( :"days/day7")
+  erb( :day)
 end
 
 

@@ -6,8 +6,11 @@ require_relative( '../models/eatery.rb')
 require_relative( '../models/burger.rb')
 
 get '/deals' do
+
   @deals = Deal.all()
+  # @day_id = Deal.find_day()
   erb ( :"deals/index" )
+
 end
 
 get '/deals/:id/info' do

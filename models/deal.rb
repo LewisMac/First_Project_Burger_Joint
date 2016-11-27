@@ -1,15 +1,17 @@
 require_relative( '../db/sql_runner' )
 require_relative( 'days.rb' )
+require( 'pry-byebug' )
 
 class Deal
 
-  attr_reader(:deal_type, :id , :day, :deal_price1, :deal_price2)
+  attr_reader(:deal_type, :id , :days, :eatery_id, :burger_id)
 
   def initialize( options )
     @id = nil || options['id'].to_i
     @burger_id = options['burger_id']
     @eatery_id = options['eatery_id']
     @deal_type = options['deal_type']
+    # @days = Day.all
     # @deal_price1 = options['deal_price1']
     # @deal_price2 = options['deal_price2']
   end
@@ -43,6 +45,12 @@ class Deal
     return Deal.new( results.first )
   end
 
+  def self.find_day( id )
+    sql = "SELECT day FROM deals WHERE id=#{id}"
+    results = SqlRunner.run( sql )
+    return Deal.new( results.first )
+  end
+
   def find_by_day( day )
     sql = "SELECT * FROM deals WHERE day='#{day}'"
     results = SqlRunner.run( sql )
@@ -54,8 +62,6 @@ class Deal
     results = SqlRunner.run( sql )
     return results.map { |hash| Deal.new( hash ) }
   end
-
-  
 
   def self.delete_all
     sql = "DELETE FROM deals"

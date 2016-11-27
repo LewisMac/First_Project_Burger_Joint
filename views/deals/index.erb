@@ -1,3 +1,7 @@
 <h1>Deals</h1>
 
-<p> <%= @deals %> </p>
+<% for deal in @deals%>
+<p> <%= deal.deal_type %> </p>
+<p> <%= @day_id %> </p>
+<p> <%= deal.eatery_id %> </p>
+<% end %>
