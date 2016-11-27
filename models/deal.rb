@@ -54,10 +54,10 @@ class Deal
     
   end
 
-  def find_by_day( day )
+  def self.find_by_day( day )
     sql = "SELECT * FROM deals WHERE day='#{day}'"
     results = SqlRunner.run( sql )
-    return Deal.new( results.first )
+    return results.map { |hash| Deal.new( hash ) }
   end
 
   def self.all()

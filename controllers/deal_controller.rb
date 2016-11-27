@@ -10,9 +10,9 @@ get '/deals' do
   @all_deals = []
 
   @deals = Deal.all()
+
   for deal in @deals
     @deal_info = deal.information
-
     @day = deal.find_day(deal.id).first
     @all_deals << @deal_info
   end

@@ -15,10 +15,10 @@ end
 get "/:day" do
   @deal_info = []
   @all_deals = []
-  
-  deals = Deal.all
 
-  for deal in deals
+  day_deals = Deal.find_by_day(params[:day])
+
+  for deal in day_deals
     @deal_info = deal.information
     @all_deals << @deal_info
   end
