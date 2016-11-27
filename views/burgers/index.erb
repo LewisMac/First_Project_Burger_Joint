@@ -1,3 +1,9 @@
 <h1>Burgers</h1>
 
-<p> <%= @burgers %> </p>
+<% counter = 0 %>
+<% for burger in @all_burgers %>
+
+<p> <%= burger %> </p>
+<p> <% counter += 1 %> </p>
+
+<% end %>

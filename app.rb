@@ -18,7 +18,6 @@ get "/:day" do
   
   deals = Deal.all
 
-
   for deal in deals
     @deal_info = deal.information
     @all_deals << @deal_info
