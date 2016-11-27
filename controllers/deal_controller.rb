@@ -7,8 +7,16 @@ require_relative( '../models/burger.rb')
 
 get '/deals' do
 
+  @all_deals = []
+
   @deals = Deal.all()
-  # @day_id = Deal.find_day()
+  for deal in @deals
+    @deal_info = deal.information
+
+    @day = deal.find_day(deal.id).first
+    @all_deals << @deal_info
+  end
+
   erb ( :"deals/index" )
 
 end

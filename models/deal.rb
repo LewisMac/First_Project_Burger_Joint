@@ -34,8 +34,11 @@ class Deal
     "SELECT name FROM burgers WHERE id=#{@burger_id};"
     sql2 = 
     "SELECT name FROM eateries WHERE id=#{@eatery_id};"
+    sql3 = 
+    "SELECT deal_type FROM deals WHERE id=#{@id};"
     array << SqlRunner.run(sql).first
     array << SqlRunner.run(sql2).first
+    array << SqlRunner.run(sql3).first
     return array
   end
 
@@ -45,10 +48,10 @@ class Deal
     return Deal.new( results.first )
   end
 
-  def self.find_day( id )
+  def find_day( id )
     sql = "SELECT day FROM deals WHERE id=#{id}"
-    results = SqlRunner.run( sql )
-    return Deal.new( results.first )
+    return SqlRunner.run( sql )
+    
   end
 
   def find_by_day( day )
