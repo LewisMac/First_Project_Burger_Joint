@@ -3,6 +3,7 @@ require_relative( '../models/days.rb' )
 require_relative( '../models/deal.rb' )
 require_relative( '../models/eatery.rb' )
 require_relative( '../models/price.rb' )
+require_relative( '../models/x_for_y_deals.rb' )
 
 require('pry-byebug')
 
@@ -66,6 +67,14 @@ deal2 = Deal.new({
   'deal_price2' => price2.id
   } )
 deal2.save(2)
+
+multiple_vals1 = XForYDeals.new({
+  'x_value' => 2,
+  'y_value' => 1,
+  'burger_id' => [1, 2]
+  })
+
+multiple_vals1.save
 
 
 

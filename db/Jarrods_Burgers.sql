@@ -1,5 +1,6 @@
 
 -- DROP TABLE days;
+DROP TABLE x_for_y_deals;
 DROP TABLE deals;
 DROP TABLE burgers;
 DROP TABLE prices;
@@ -42,8 +43,8 @@ CREATE TABLE deals(
 CREATE TABLE x_for_y_deals(
   id SERIAL4 primary key,
   x_value INT4,
-  y_value INT4
-  
+  y_value INT4,
+  burger_id text
 );
 
   
