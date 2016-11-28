@@ -3,7 +3,11 @@
 <% counter = 0 %>
 <% for burger in @all_burgers %>
 
+<% price = @all_prices[counter]['price_value'] %>
+
 <p> <%= burger %> </p>
+<p> <%= price %> </p>
+
 <p> <% counter += 1 %> </p>
 
 <% end %>

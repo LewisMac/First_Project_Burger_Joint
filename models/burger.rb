@@ -27,7 +27,10 @@ class Burger
     return Burger.new( results.first )
   end
 
-  
+  def find_price( id )
+    sql = "SELECT price_value FROM prices WHERE id=#{price_id}"
+    return SqlRunner.run( sql )
+  end
 
   def self.all()
     sql = "SELECT * FROM burgers"

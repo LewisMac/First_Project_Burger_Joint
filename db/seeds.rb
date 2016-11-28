@@ -37,7 +37,7 @@ price3.save
 
 burger1 = Burger.new({
   'name' => 'burgerburger',
-  'price_id' => price1.id,
+  'price_id' => price3.id,
   'eatery_id' => eatery1.id
   })
 burger1.save

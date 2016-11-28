@@ -2,7 +2,7 @@ require_relative( '../db/sql_runner' )
 
 class Price
 
-  attr_reader :cost, :id
+  attr_reader :price_value, :id
 
   def initialize(options)
     @id = nil || options['id'].to_i
