@@ -2,7 +2,7 @@ require_relative( '../db/sql_runner' )
 
 class Eatery
 
-  attr_reader :eatery, :id
+  attr_reader :name, :id
 
   def initialize(options)
     @id = nil || options['id'].to_i

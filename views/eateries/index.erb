@@ -1,3 +1,9 @@
 <h1>Eateries</h1>
 
-<p> <%= @eateries %> </p>
+<% counter = 0 %>
+<% for eatery in @all_eateries %>
+
+<p> <%= eatery %> </p>
+<p> <% counter += 1 %> </p>
+  
+<%  end %>
