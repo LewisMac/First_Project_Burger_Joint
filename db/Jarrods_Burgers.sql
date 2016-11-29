@@ -44,7 +44,9 @@ CREATE TABLE x_for_y_deals(
   id SERIAL4 primary key,
   x_value INT4,
   y_value INT4,
-  burger_id text
+  burger_id text,
+  day VARCHAR(255),
+  eatery_id INT4 references eateries(id) ON DELETE CASCADE
 );
 
   

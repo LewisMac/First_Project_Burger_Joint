@@ -92,15 +92,18 @@ deal2.save(2)
 multiple_vals1 = XForYDeals.new({
   'x_value' => 2,
   'y_value' => 1,
-  'burger_id' => [1, 2]
+  'burger_id' => [1,2],
+  'eatery_id' => eatery2.id
   })
-multiple_vals1.save
+multiple_vals1.save(0)
+
 multiple_vals2 = XForYDeals.new({
   'x_value' => 5,
   'y_value' => 3,
-  'burger_id' => [1, 2, 3, 4, 5]
+  'burger_id' => [1,2,3,4,5],
+  'eatery_id' => eatery1.id
   })
-multiple_vals2.save
+multiple_vals2.save(1)
 
 
 

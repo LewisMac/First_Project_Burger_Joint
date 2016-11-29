@@ -9,18 +9,34 @@ require_relative( '../models/x_for_y_deals.rb')
 get '/deals' do
 
   @all_deals = []
+  @xydeals = []
+  @deal_ids = []
 
   @deals = Deal.all()
+
+  @xyall_deals = XForYDeals.all
 
   for deal in @deals
     @deal_info = deal.information
     @day = deal.find_day(deal.id).first
     @all_deals << @deal_info
   end
+
+  for deal in @xyall_deals
+    @xydeals << deal.x_y_information
+    
+  end
+
+  for deal in @xydeals
+    @deal_ids << deal[0]['burger_id']
+  end
+
+
   erb ( :"deals/index" )
 end
 
 get '/deals/:id' do
+
   @deal_burgers = []
   @x_y = []
   
@@ -42,7 +58,33 @@ get '/deals/:id/info' do
   deal_no = Deal.find(params[:id])
   @deals = deal_no.information
 
-  erb( :"deals/index" )
+  erb( :"deals/information" )
+end
+
+
+get '/testing' do
+ deals = []
+ deal_ids = []
+ burgers = []
+  all_deals = XForYDeals.all
+  
+  for deal in all_deals
+    deals << deal.x_y_information
+  end
+  
+  for deal in deals
+    @deal_ids << deal[0]['burger_id']
+  end
+
+  for deal in @deal_ids
+    deal_array = deal.split(',')
+    for burger_id in deal_array
+      burgers << Burger.find(burger_id)
+    end
+  end
+  
+  erb( :testing )
+
 end
 
 

@@ -9,5 +9,35 @@
 <p> <%= deal[0]['name'] %> </p>
 <p> <%= deal[1]['name'] %> </p>
 <p> <%= day %> </p>
+</br>
 
+<% end %>
+
+
+<% counter = 0 %>
+<% for deal in @deal_ids %>
+<% burgers = [] %>
+
+<% day = @xydeals[counter][0]['day'] %>
+
+<p><%= @xyall_deals[counter].x_value %> for 
+<%= @xyall_deals[counter].y_value %></p>
+
+
+
+<% eatery_id = @xydeals[counter][0]['eatery_id'] %>
+<%= Eatery.find(eatery_id).name %>
+
+<% deal_array = deal.split(',') %>
+  <% for burger_id in deal_array %>
+  <% burgers << Burger.find(burger_id) %>
+  <% end %>
+
+  <% for burger in burgers %>
+    <p> <%= burger.name %> </p>
+  <% end %>
+<p><%= day %></p>
+<% counter += 1 %>
+
+</br>
 <% end %>
