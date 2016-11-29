@@ -23,4 +23,24 @@ class XForYDeals
     @id = results.first()['id'].to_i
   end
 
+  def find_burgers_in_deal(deal_id)
+
+    sql = "SELECT * FROM x_for_y_deals WHERE id = #{deal_id}"
+    results = SqlRunner.run( sql )
+    return XForYDeals.new( results.first )
+  end
+
+  def sort_by_value(value)
+    sql = SELECT 
+  end
+
+  def self.all()
+    sql = "SELECT * FROM x_for_y_deals"
+    results = SqlRunner.run( sql )
+    return results.map { |hash| XForYDeals.new( hash ) }
+  end
+
 end
+
+
+

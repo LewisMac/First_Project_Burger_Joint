@@ -12,12 +12,12 @@ Price.delete_all
 Eatery.delete_all
 
 eatery1 = Eatery.new({
-  'name' => 'Place name here'
+  'name' => 'Eatery no 1'
   })
 eatery1.save
 
 eatery2 = Eatery.new({
-  'name' => 'Other Name Here'
+  'name' => 'Eatery no 2'
   })
 eatery2.save
 
@@ -44,11 +44,32 @@ burger1 = Burger.new({
 burger1.save
 
 burger2 = Burger.new({
-  'name' => 'Rawr',
+  'name' => 'Hamburger',
   'price_id' => price1.id,
   'eatery_id' => eatery2.id
   })
 burger2.save
+
+burger3 = Burger.new({
+  'name' => 'Cheeseburger',
+  'price_id' => price2.id,
+  'eatery_id' => eatery1.id
+  })
+burger3.save
+
+burger4 = Burger.new({
+  'name' => 'Chilli Burger',
+  'price_id' => price1.id,
+  'eatery_id' => eatery2.id
+  })
+burger4.save
+
+burger5 = Burger.new({
+  'name' => 'Veggie Burger',
+  'price_id' => price3.id,
+  'eatery_id' => eatery2.id
+  })
+burger5.save
 
 deal1 = Deal.new({
   'deal_type' => 'Two for One',
@@ -73,8 +94,13 @@ multiple_vals1 = XForYDeals.new({
   'y_value' => 1,
   'burger_id' => [1, 2]
   })
-
 multiple_vals1.save
+multiple_vals2 = XForYDeals.new({
+  'x_value' => 5,
+  'y_value' => 3,
+  'burger_id' => [1, 2, 3, 4, 5]
+  })
+multiple_vals2.save
 
 
 

@@ -25,7 +25,7 @@ get "/:day" do
 
   @day = params[:day]
 
-  erb( :day )
+  erb( :"days/day" )
 end
 
 

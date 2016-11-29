@@ -1,0 +1,10 @@
+<h1><%= @x_y[0] %> for <%= @x_y[1] %> </h1>
+
+<% counter = 0 %>
+
+<%for burger in @deal_burgers %>
+
+<p> <%= @deal_burgers[counter].name %>
+<% counter += 1 %>
+
+  <%end%>

@@ -6,8 +6,8 @@
 <% day = @day['day'] %>
 
 <p> <%= deal[2]['deal_type'] %> </p>
-<p> <a href="/burgers"> <%= deal[0]['name'] %> </a></p>
-<p> <a href="/eateries"> <%= deal[1]['name'] %> </a></p>
-<p> <a href="/<%= "#{day}".to_s %>"> <%= day %> </a></p>
+<p> <%= deal[0]['name'] %> </p>
+<p> <%= deal[1]['name'] %> </p>
+<p> <%= day %> </p>
 
 <% end %>
