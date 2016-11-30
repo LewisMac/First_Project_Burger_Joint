@@ -4,13 +4,13 @@ require( 'pry-byebug' )
 
 class Deal
 
-  attr_reader(:deal_type, :id , :days, :eatery_id, :burger_id)
+  attr_reader(:percentage_off, :id , :days, :eatery_id, :burger_id)
 
   def initialize( options )
     @id = nil || options['id'].to_i
     @burger_id = options['burger_id']
     @eatery_id = options['eatery_id']
-    @deal_type = options['deal_type']
+    @percentage_off = options['percentage_off']
     # @days = Day.all
     # @deal_price1 = options['deal_price1']
     # @deal_price2 = options['deal_price2']
@@ -20,8 +20,8 @@ class Deal
 
     @day = Day.all["#{day_id}".to_i]
 
-    sql = "INSERT INTO deals(deal_type, day, burger_id, eatery_id)
-    VALUES ('#{@deal_type}', '#{@day}', '#{@burger_id}', '#{@eatery_id}')
+    sql = "INSERT INTO deals(percentage_off, day, burger_id, eatery_id)
+    VALUES ('#{@percentage_off}', '#{@day}', '#{@burger_id}', '#{@eatery_id}')
      RETURNING *"
 
     results = SqlRunner.run(sql)
@@ -35,7 +35,7 @@ class Deal
     sql2 = 
     "SELECT name FROM eateries WHERE id=#{@eatery_id};"
     sql3 = 
-    "SELECT deal_type FROM deals WHERE id=#{@id};"
+    "SELECT percentage_off FROM deals WHERE id=#{@id};"
     array << SqlRunner.run(sql).first
     array << SqlRunner.run(sql2).first
     array << SqlRunner.run(sql3).first
@@ -76,7 +76,7 @@ class Deal
     deal_names = []
     deals = SqlRunner.run(sql)
     deals.each do |deal|
-      deal_names << deal['deal_type']
+      deal_names << deal['deal_']
     end
     return deal_names
   end

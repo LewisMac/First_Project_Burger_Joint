@@ -1,4 +1,5 @@
 
+DROP TABLE joining_set_price;
 DROP TABLE joining;
 DROP TABLE x_for_y_deals;
 DROP TABLE deals;
@@ -25,7 +26,7 @@ CREATE TABLE burgers(
 
 CREATE TABLE deals(
   id SERIAL4 primary key,
-  deal_type VARCHAR(255),
+  percentage_off INT4,
   day VARCHAR(255),
   burger_id INT4 references burgers(id) ON DELETE CASCADE,
   eatery_id INT4 references eateries(id) ON DELETE CASCADE,
@@ -44,8 +45,16 @@ CREATE TABLE x_for_y_deals(
 
 CREATE TABLE joining (
   id SERIAL4 primary key,
+  type VARCHAR(255),
   deal_id INT4 references x_for_y_deals(id) ON DELETE CASCADE,
   burger_id INT4 references burgers(id) ON DELETE CASCADE
+);
+
+CREATE TABLE joining_set_price (
+id SERIAL4 primary key,
+day VARCHAR(255),
+burger_id INT4 references burgers(id) ON DELETE CASCADE,
+price_id INT4 references prices(id) ON DELETE CASCADE
 );
 
   

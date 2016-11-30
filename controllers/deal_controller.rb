@@ -5,6 +5,7 @@ require_relative( '../models/deal.rb')
 require_relative( '../models/eatery.rb')
 require_relative( '../models/joining.rb')
 require_relative( '../models/burger.rb')
+require_relative( '../models/joining_set_price.rb')
 require_relative( '../models/x_for_y_deals.rb')
 
 get '/deals' do
@@ -15,7 +16,7 @@ get '/deals' do
   @deal_prices = []
 
   @deals = Deal.all()
-
+  @set_price = JoiningSetPrice.all
   @xyall_deals = XForYDeals.all
 
   for deal in @deals
@@ -23,18 +24,12 @@ get '/deals' do
     @day = deal.find_day(deal.id).first
     @all_deals << @deal_info
   end
-
-
-
-
   @joindeals = Joining.all
-
   @xy_deal_info = []
   @other_deals = []
   @day_deals = []
   @xydeal_info = []
   all_keys = []
-
 
   @other_deals << @joindeals.group_by{ |x| x.deal_id }
 
@@ -50,8 +45,6 @@ get '/deals' do
   other_counter = 0
 
   for deal in @other_deals[0]
-
-   
     @burger_names = []
     
     @xy_deal_info << deal[1][other_counter].x_y_information(deal[1][other_counter].deal_id)
@@ -67,10 +60,17 @@ get '/deals' do
     @xydeal_info << @xy_deal_info
 
     counter += 1
-
   end
 
+  @set_price_array = []
+  info = []
 
+  for deal in @set_price
+
+    info << Price.find(deal.price_id.to_i)
+    info << Burger.find(deal.burger_id.to_i)
+    @set_price_array << info
+  end
 
   erb ( :"deals/index" )
 end

@@ -1,6 +1,7 @@
 require_relative( '../models/burger.rb' )
 require_relative( '../models/days.rb' )
 require_relative( '../models/joining.rb' )
+require_relative( '../models/joining_set_price.rb' )
 require_relative( '../models/deal.rb' )
 require_relative( '../models/eatery.rb' )
 require_relative( '../models/price.rb' )
@@ -130,12 +131,21 @@ joining_table7 = Joining.new({
   })
 joining_table7.save
 
-deal1 = Deal.new({
-  'deal_type' => 'Everything for £10',
+deal1 = JoiningSetPrice.new({
+  'type' => 'Everything for £10',
+  'price_id' => price1.id,
+  'burger_id' => burger3.id
+  })
+deal1.save(2)
+
+deal2 = Deal.new({
+  'percentage_off' => 50,
   'eatery_id' => eatery1.id,
   'burger_id' => burger3.id
   })
-deal1.save(3)
+deal2.save(3)
+
+
 
 binding.pry
 nil

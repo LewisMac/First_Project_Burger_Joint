@@ -1,37 +1,37 @@
 require_relative("../db/sql_runner")
 
 
-class Joining
+class JoiningSetPrice
 
   attr_reader :id
-  attr_accessor :burger_id, :deal_id
+  attr_accessor :burger_id, :price_id
 
   def initialize( options )
     @id = options['id'].to_i
     @burger_id = options['burger_id'].to_i
-    @deal_id = options['deal_id']
+    @price_id = options['price_id']
     
   end
 
-  def save()
+  def save(day_id)
 
-    
+    @day = Day.all["#{day_id}".to_i]
 
-    sql = "INSERT INTO joining (burger_id, deal_id)
-           VALUES ('#{ @burger_id }', '#{ @deal_id }') RETURNING id"
+    sql = "INSERT INTO joining_set_price (burger_id, price_id, day)
+           VALUES ('#{ @burger_id }', '#{ @price_id }', '#{@day}') RETURNING id"
     join = SqlRunner.run( sql ).first
     @id = join['id'].to_i
   end
 
   def self.all()
-    sql = "SELECT * FROM joining"
+    sql = "SELECT * FROM joining_set_price"
     joins = SqlRunner.run(sql)
-    result = joins.map { |join| Joining.new( join ) }
+    result = joins.map { |join| JoiningSetPrice.new( join ) }
     return result
   end
 
   def self.delete_all() 
-    sql = "DELETE FROM joining"
+    sql = "DELETE FROM joining_set_price"
     SqlRunner.run(sql)
   end
 
@@ -42,21 +42,15 @@ class Joining
   end
 
   def split_deals()
-    sql = "SELECT * FROM joining WHERE deal_id=#{deal_id}"
+    sql = "SELECT * FROM joining_set_price WHERE price_id=#{price_id}"
     results = SqlRunner.run( sql )
-    return Joining.new( results.first )
+    return JoiningSetPrice.new( results.first )
   end
 
   def burger()
     sql = "SELECT * FROM burgers WHERE id = #{@burger_id}"
     deal_hash = SqlRunner.run(sql).first
     return Burger.new(deal_hash)
-  end
-
-  def deal()
-    sql =  "SELECT * FROM x_for_y_deals WHERE id = #{@deal_id}"
-    deal_hash = SqlRunner.run(sql).first
-    return XForYDeals.new(deal_hash)
   end
 
 end
