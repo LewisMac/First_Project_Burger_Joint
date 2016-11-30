@@ -3,9 +3,20 @@
 <% counter = 0 %>
 <% for burger in @all_burgers %>
 
-<% price = @all_prices[counter]['price_value'] %>
 
-<p> <%= burger %> </p>
+<% price = @all_prices[counter]['price_value'] %>
+<% for key, value in burger %>
+
+<% if key == :burger %>
+<% name = value %>
+<% elsif key == :id %>
+<% burger_id = value %>
+
+<p><a href="/burgers/<%=burger_id%>" ><%= name %></a></p>
+<% end %>
+
+
+<% end %>
 <p> £<%= price %> </p>
 
 <p> <% counter += 1 %> </p>

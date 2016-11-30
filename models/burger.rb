@@ -42,4 +42,9 @@ class Burger
     sql = "DELETE FROM burgers"
     SqlRunner.run( sql )
   end
+
+  def self.delete( id )
+    sql = "DELETE FROM burgers WHERE id=#{id}"
+    SqlRunner.run( sql )
+  end
 end

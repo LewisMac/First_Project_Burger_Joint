@@ -13,7 +13,7 @@ get '/burgers' do
 
   for burger in @burgers
 
-    @all_burgers << burger.name
+    @all_burgers << {:burger =>burger.name, :id =>burger.id}
     price = burger.find_price(burger.price_id).first
     @all_prices << price
     
@@ -27,7 +27,7 @@ end
 get '/burgers/new' do
   @eatery_names = Eatery.all_names()
 
-  erb(:new)
+  erb(:"burgers/new")
 end
 
 post '/burgers' do
@@ -53,4 +53,14 @@ post '/burgers' do
   redirect to('/burgers')
 end
 
+
+post '/burgers/:id/delete' do
+  Burger.delete( params[:id] )
+  redirect to('/burgers')
+end
+
+get '/burgers/:id' do
+  @burger = Burger.find( params[:id] )
+  erb(:'burgers/burger_show')
+end
 

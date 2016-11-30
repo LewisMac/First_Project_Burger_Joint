@@ -1,9 +1,9 @@
 <h1>Eateries</h1>
 
 <% counter = 0 %>
-<% for eatery in @all_eateries %>
+<% for eatery in @eateries %>
 
-<p> <%= eatery %> </p>
+<p> <a href="/eateries/<%=eatery.id%>" ><%= eatery.name %></a> </p>
 <p> <% counter += 1 %> </p>
   
 <%  end %>

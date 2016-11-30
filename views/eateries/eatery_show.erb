@@ -1,0 +1,8 @@
+<h1><%= @eatery.name %></h1>
+
+<p>First Name: <%= @eatery.name %> </p>
+
+
+<form action="/eateries/<%= @eatery.id %>/delete" method="post" >
+<p><input type="submit" value="delete" /></p>
+</form>

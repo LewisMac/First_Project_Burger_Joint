@@ -1,4 +1,4 @@
-<h1>Enrol Student</h1>
+<h1>Add Burger</h1>
 
 <form action="/burgers" method="post" >
   <p>
@@ -14,7 +14,7 @@
       <select name="eatery" >
         <% @eatery_names.each do |eatery| %>
         <option value="<%=eatery%>"><%=eatery%></option>
-        <%end%>
+        <% end %>
       </select>
     </label>
   </p>
@@ -27,5 +27,5 @@
   </p>
 
 
-  <p><input type="submit" value="Enrol" /></p>
+  <p><input type="submit" value="Add" /></p>
 </form>

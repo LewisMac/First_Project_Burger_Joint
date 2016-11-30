@@ -52,4 +52,9 @@ class Eatery
     return eatery_names
   end
 
+  def self.delete( id )
+    sql = "DELETE FROM eateries WHERE id=#{id}"
+    SqlRunner.run( sql )
+  end
+
 end
