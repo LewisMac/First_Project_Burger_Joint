@@ -5,6 +5,11 @@ body {
   font-family: 'Oleo Script', cursive;
 }
 
+h1 {
+  font-family: 'Oleo Script', cursive;
+  
+}
+
 a:link {
   color: navy;
   font-size: 150%;

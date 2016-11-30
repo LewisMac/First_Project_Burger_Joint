@@ -42,8 +42,17 @@ div.info {
   font-size: 20px;
 }
 
-div.button {
-
+div.header {
+  display: flex;
+  height: 160px;
+  background-color: #F1E9DF;
+  opacity: 0.9;
+  font-family: 'Oleo Script', cursive;
+  font-size: 30px;
+  width: 100%;
+  
+  
+  border-bottom: 2px solid black;
 }
 
 
