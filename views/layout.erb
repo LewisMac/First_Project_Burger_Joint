@@ -14,38 +14,40 @@
 
 </head>
 <body>
-  <div class="main">
-    <div>
-      <div class="navigate">
+  <div class="thing">
+    <div class="main">
+      <div>
+        <div class="navigate">
 
-       <a href="/"> Home </a>
-      <hr/>
-       <a href="/burgers"> Burgers </a>
-      <hr/>
-       <a href="/eateries"> Eateries </a>
-      <hr/>
-       <a href="/deals"> Deals </a>
-      </div>
-      <li><a><h3>All deals by day</h3></a>
-        <ul>
-          <li> <a href="/Monday"> Monday </a></li>
-          <li> <a href="/Tuesday"> Tuesday </a></li>
-          <li> <a href="/Wednesday"> Wednesday </a></li>
-          <li> <a href="/Thursday"> Thursday </a></li>
-          <li> <a href="/Friday"> Friday </a></li>
-          <li> <a href="/Saturday"> Saturday </a></li>
-          <li> <a href="/Sunday"> Sunday </a></li>
-        </ul>
-      </li>
+         <a href="/"> Home </a>
+         <hr/>
+         <a href="/burgers"> Burgers </a>
+         <hr/>
+         <a href="/eateries"> Eateries </a>
+         <hr/>
+         <a href="/deals"> Deals </a>
+       </div>
+       <a><h3>All deals by day</h3></a>
 
-    </div>
-    <div>
+       <p><a href="/Monday"> Monday </a></p>
+       <p><a href="/Tuesday"> Tuesday </a></p>
+       <p><a href="/Wednesday"> Wednesday </a></p>
+       <p><a href="/Thursday"> Thursday </a></p>
+       <p><a href="/Friday"> Friday </a></p>
+       <p><a href="/Saturday"> Saturday </a></p>
+       <p><a href="/Sunday"> Sunday </a></p>
+
+       
+
+     </div>
+     <div class="deals">
       <%= yield %>
     </div>
-    <div>
+    <div class ="create">
       <p><a href="/burgers/new">Build your own Burger</a></p> 
       <p><a href="/eateries/new">Build your own Eatery</a></p> 
     </div>
   </div>
+</div>
 </body>
 </html>
