@@ -24,4 +24,10 @@ class Price
     SqlRunner.run( sql )
   end
 
+  def self.find(price_id)
+      sql = "SELECT * FROM prices WHERE id=#{price_id}"
+      results = SqlRunner.run( sql )
+      return Price.new( results.first )
+    end
+
 end

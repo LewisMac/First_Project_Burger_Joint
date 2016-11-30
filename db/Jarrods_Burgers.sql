@@ -1,17 +1,10 @@
 
--- DROP TABLE days;
+DROP TABLE joining;
 DROP TABLE x_for_y_deals;
 DROP TABLE deals;
 DROP TABLE burgers;
 DROP TABLE prices;
 DROP TABLE eateries;
-
-
-
--- CREATE TABLE days(
---   id SERIAL4 primary key,
---   day VARCHAR
---   );
 
 CREATE TABLE prices(
   id SERIAL4 primary key,
@@ -35,9 +28,8 @@ CREATE TABLE deals(
   deal_type VARCHAR(255),
   day VARCHAR(255),
   burger_id INT4 references burgers(id) ON DELETE CASCADE,
-  eatery_id INT4 references eateries(id) ON DELETE CASCADE
-  -- deal_price1 INT4 references prices(id) ON DELETE CASCADE,
-  -- deal_price2 INT4 references prices(id) ON DELETE CASCADE
+  eatery_id INT4 references eateries(id) ON DELETE CASCADE,
+  price INT4
   );
 
 CREATE TABLE x_for_y_deals(
@@ -46,7 +38,14 @@ CREATE TABLE x_for_y_deals(
   y_value INT4,
   burger_id text,
   day VARCHAR(255),
-  eatery_id INT4 references eateries(id) ON DELETE CASCADE
+  eatery_id INT4 references eateries(id) ON DELETE CASCADE,
+  price INT4
+);
+
+CREATE TABLE joining (
+  id SERIAL4 primary key,
+  deal_id INT4 references x_for_y_deals(id) ON DELETE CASCADE,
+  burger_id INT4 references burgers(id) ON DELETE CASCADE
 );
 
   

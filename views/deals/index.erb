@@ -14,30 +14,22 @@
 <% end %>
 
 
+
+<% other_counter = 1 %>
 <% counter = 0 %>
-<% for deal in @deal_ids %>
-<% burgers = [] %>
-
-<% day = @xydeals[counter][0]['day'] %>
-
-<p><%= @xyall_deals[counter].x_value %> for 
-<%= @xyall_deals[counter].y_value %></p>
+<% for deal in @xydeal_info %>
 
 
 
-<% eatery_id = @xydeals[counter][0]['eatery_id'] %>
-<%= Eatery.find(eatery_id).name %>
+<p><%= deal[counter][0]["x_value"] %> for <%= deal[counter][0]["y_value"] %></p>
 
-<% deal_array = deal.split(',') %>
-  <% for burger_id in deal_array %>
-  <% burgers << Burger.find(burger_id) %>
-  <% end %>
+<% for values in deal[other_counter] %>
 
-  <% for burger in burgers %>
-    <p> <%= burger.name %> </p>
-  <% end %>
-<p><%= day %></p>
-<% counter += 1 %>
+<p><%= values.name %></p>
+
+<% end %>
+<% counter += 2 %>
+<% other_counter += 2 %>
 
 </br>
 <% end %>

@@ -31,7 +31,7 @@ class Deal
   def information()
     array = []
     sql = 
-    "SELECT name FROM burgers WHERE id=#{@burger_id};"
+    "SELECT name, price_id FROM burgers WHERE id=#{@burger_id};"
     sql2 = 
     "SELECT name FROM eateries WHERE id=#{@eatery_id};"
     sql3 = 

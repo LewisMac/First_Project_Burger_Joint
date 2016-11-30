@@ -3,11 +3,13 @@
 
 
 <% counter = 0 %>
-<% for deals in @all_deals %>
+<% for deals in @day_deals %>
 
-<p> <%= deals[0]['name'] %> </p>
+
+<p> £<%= deals[0].price_value %> </p>
 <p> <%= deals[1]['name'] %> </p>
-<p> <%= deals[2]['deal_type'] %> </p>
+<p> <%= deals[2]['name'] %> </p>
+<p> <%= deals[3]['deal_type'] %> </p>
 
 <% counter += 1 %>
 

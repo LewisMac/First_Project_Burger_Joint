@@ -3,6 +3,7 @@ require( 'sinatra/contrib/all' )
 require( 'pry-byebug' )
 require_relative( '../models/deal.rb')
 require_relative( '../models/eatery.rb')
+require_relative( '../models/joining.rb')
 require_relative( '../models/burger.rb')
 require_relative( '../models/x_for_y_deals.rb')
 
@@ -11,6 +12,7 @@ get '/deals' do
   @all_deals = []
   @xydeals = []
   @deal_ids = []
+  @deal_prices = []
 
   @deals = Deal.all()
 
@@ -22,14 +24,52 @@ get '/deals' do
     @all_deals << @deal_info
   end
 
-  for deal in @xyall_deals
-    @xydeals << deal.x_y_information
+
+
+
+  @joindeals = Joining.all
+
+  @xy_deal_info = []
+  @other_deals = []
+  @day_deals = []
+  @xydeal_info = []
+  all_keys = []
+
+
+  @other_deals << @joindeals.group_by{ |x| x.deal_id }
+
+  for deal in @other_deals
+    for key, value in deal
+      all_keys << key.to_i
+    end
+  end
+  all_keys.sort!
+
+
+  counter = all_keys.min
+  other_counter = 0
+
+  for deal in @other_deals[0]
+
+   
+    @burger_names = []
     
+    @xy_deal_info << deal[1][other_counter].x_y_information(deal[1][other_counter].deal_id)
+    
+    for id in deal[1]
+
+      burger_id = id.burger_id
+
+      @burger_names << Burger.find(burger_id)
+    end
+    
+    @xy_deal_info << @burger_names
+    @xydeal_info << @xy_deal_info
+
+    counter += 1
+
   end
 
-  for deal in @xydeals
-    @deal_ids << deal[0]['burger_id']
-  end
 
 
   erb ( :"deals/index" )
@@ -41,6 +81,7 @@ get '/deals/:id' do
   @x_y = []
   
   all_deals = XForYDeals.all
+
 
   @all_deals = all_deals[0].find_burgers_in_deal(params[:id])
   burger_id_array = @all_deals.burger_id.split(',')
@@ -63,26 +104,18 @@ end
 
 
 get '/testing' do
- deals = []
- deal_ids = []
- burgers = []
-  all_deals = XForYDeals.all
-  
-  for deal in all_deals
-    deals << deal.x_y_information
-  end
-  
-  for deal in deals
-    @deal_ids << deal[0]['burger_id']
+
+  @burgers = []
+  @deals = Joining.all
+  counter = 0
+
+  for deal in @deals
+    @burgers << deal.burger
+    counter += 1
   end
 
-  for deal in @deal_ids
-    deal_array = deal.split(',')
-    for burger_id in deal_array
-      burgers << Burger.find(burger_id)
-    end
-  end
-  
+
+
   erb( :testing )
 
 end
