@@ -3,15 +3,28 @@
 
 
 <% counter = 0 %>
-<% for deals in @day_deals %>
+<% for deals in @all_deals %>
+
+<% next if deals == [] %>
+
+<%  %>
+<% for key, value in deals %>
+<% if key == :x %>
+
+<p> <%= deals[:x] %> for <%= deals[:y] %> </p>
+
+<% end %>
+<% if key == :price %>
+
+<p> everything for £<%= deals[:price].price_value %></p>
+<% end %>
+<% if key == :percent %>
+
+<p> <%= deals[:percent] %>% off</p>
+<% end %>
+<% end %>
 
 
-<p> £<%= deals[0].price_value %> </p>
-<p> <%= deals[1]['name'] %> </p>
-<p> <%= deals[2]['name'] %> </p>
-<p> <%= deals[3]['deal_type'] %> </p>
 
 <% counter += 1 %>
-
-
 <% end %>

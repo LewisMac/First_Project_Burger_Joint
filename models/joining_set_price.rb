@@ -53,4 +53,10 @@ class JoiningSetPrice
     return Burger.new(deal_hash)
   end
 
+  def self.find_by_day( day )
+    sql = "SELECT * FROM joining_set_price WHERE day='#{day}'"
+    results = SqlRunner.run( sql )
+    return results.map { |hash| JoiningSetPrice.new( hash ) }
+  end
+
 end

@@ -45,6 +45,7 @@ CREATE TABLE x_for_y_deals(
 
 CREATE TABLE joining (
   id SERIAL4 primary key,
+  day VARCHAR(255),
   type VARCHAR(255),
   deal_id INT4 references x_for_y_deals(id) ON DELETE CASCADE,
   burger_id INT4 references burgers(id) ON DELETE CASCADE

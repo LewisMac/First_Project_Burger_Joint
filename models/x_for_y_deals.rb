@@ -81,6 +81,12 @@ class XForYDeals
     @id = results.first()['id'].to_i
     return calc_price
   end
+
+  def self.find_by_day( day )
+    sql = "SELECT * FROM x_for_y_deals WHERE day='#{day}'"
+    results = SqlRunner.run( sql )
+    return results.map { |hash| XForYDeals.new( hash ) }
+  end
 end
 
 

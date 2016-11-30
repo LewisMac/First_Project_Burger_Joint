@@ -59,4 +59,10 @@ class Joining
     return XForYDeals.new(deal_hash)
   end
 
+  def self.find_by_day( day )
+    sql = "SELECT * FROM joining WHERE day='#{day}'"
+    results = SqlRunner.run( sql )
+    return results.map { |hash| Joining.new( hash ) }
+  end
+
 end
