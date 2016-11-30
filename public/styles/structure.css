@@ -1,22 +1,25 @@
+
+
 body {
-  background: white url(http://www.webweaver.nu/clipart/img/misc/food/fast-food/hamburger.png);
+  background: #F1E9DF url('/images/burger_drawing1.png');
   background-size: 50%;
   background-repeat: no-repeat;
-  background-position: right top
+  background-position: right top;
+  font-family: 'Oleo Script', cursive;
 }
 
 a:link {
   color: navy;
   font-size: 150%;
-  font-family: "Arial Black";
-  text-align:center
+  font-family: 'Courgette', cursive;
+  text-align:center;
 }
 
 a:visited {
   color: navy;
   font-size: 150%;
-  font-family: "Arial Black";
-  text-align:center
+  font-family: 'Courgette', cursive;
+  text-align:center;
 }
 
 
