@@ -37,4 +37,19 @@ class Eatery
     SqlRunner.run( sql )
   end
 
+  def self.find_by_name(name)
+    sql = "SELECT id FROM eateries WHERE name = '#{name}'"
+    return SqlRunner.run( sql )
+  end
+
+  def self.all_names()
+    sql = "SELECT * FROM eateries;"
+    eatery_names = []
+    eaterys = SqlRunner.run(sql)
+    eaterys.each do |eatery|
+      eatery_names << eatery['name']
+    end
+    return eatery_names
+  end
+
 end

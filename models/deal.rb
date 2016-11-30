@@ -70,4 +70,14 @@ class Deal
     sql = "DELETE FROM deals"
     SqlRunner.run( sql )
   end
+
+  def self.all_names()
+    sql = "SELECT * FROM deals;"
+    deal_names = []
+    deals = SqlRunner.run(sql)
+    deals.each do |deal|
+      deal_names << deal['deal_type']
+    end
+    return deal_names
+  end
 end

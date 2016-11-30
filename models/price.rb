@@ -13,7 +13,7 @@ class Price
 
     sql = "INSERT INTO prices(price_value)
     VALUES ('#{ @price_value }')
-     RETURNING *"
+    RETURNING *"
 
     results = SqlRunner.run(sql)
     @id = results.first()['id'].to_i
@@ -25,9 +25,14 @@ class Price
   end
 
   def self.find(price_id)
-      sql = "SELECT * FROM prices WHERE id=#{price_id}"
-      results = SqlRunner.run( sql )
-      return Price.new( results.first )
-    end
+    sql = "SELECT * FROM prices WHERE id=#{price_id}"
+    results = SqlRunner.run( sql )
+    return Price.new( results.first )
+  end
+
+  def self.find_by_cost(cost)
+    sql = "SELECT id FROM prices WHERE cost = #{cost}"
+    return SqlRunner.run( sql )
+  end
 
 end
