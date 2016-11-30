@@ -7,6 +7,7 @@ require_relative( '../models/joining.rb')
 require_relative( '../models/burger.rb')
 require_relative( '../models/joining_set_price.rb')
 require_relative( '../models/x_for_y_deals.rb')
+require_relative( '../models/deals/percentage_off.rb')
 
 get '/deals' do
 
@@ -14,6 +15,7 @@ get '/deals' do
   @xydeals = []
   @deal_ids = []
   @deal_prices = []
+  @new_price = []
 
   @deals = Deal.all()
   @set_price = JoiningSetPrice.all
@@ -23,6 +25,7 @@ get '/deals' do
     @deal_info = deal.information
     @day = deal.find_day(deal.id).first
     @all_deals << @deal_info
+    
   end
   @joindeals = Joining.all
   @xy_deal_info = []
@@ -66,7 +69,7 @@ get '/deals' do
   info = []
 
   for deal in @set_price
-
+    
     info << Price.find(deal.price_id.to_i)
     info << Burger.find(deal.burger_id.to_i)
     @set_price_array << info

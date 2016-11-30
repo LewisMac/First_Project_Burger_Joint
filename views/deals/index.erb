@@ -5,8 +5,10 @@
 <% for deal in @all_deals%>
 <% day = @day['day'] %>
 
+
 <p> <%= deal[2]['percentage_off'] %>% off </p>
 <p> <%= deal[0]['name'] %> </p>
+<p> £<%= PercentageOff.percentage_off(Price.find(deal[0]['price_id']).price_value, deal[2]['percentage_off']) %> </p>
 <p> <%= deal[1]['name'] %> </p>
 <p> <%= day %> </p>
 </br>
