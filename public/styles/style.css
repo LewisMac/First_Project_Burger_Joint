@@ -21,6 +21,7 @@ div.main {
 
 div.navigate {
   border: 2px solid black;
+  width: 150px;
 }
 
 div.deals {
@@ -35,3 +36,14 @@ div.create {
   background-color: #F1E9DF;
   opacity: 0.9;
 }
+
+div.info {
+  font-family: 'Oleo Script', cursive;
+  font-size: 20px;
+}
+
+div.button {
+
+}
+
+
