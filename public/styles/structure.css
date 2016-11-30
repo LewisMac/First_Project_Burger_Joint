@@ -1,10 +1,7 @@
 
 
 body {
-  background: #F1E9DF url('/images/burger_drawing1.png');
-  background-size: 50%;
-  background-repeat: no-repeat;
-  background-position: right top;
+  background-color: #F1E9DF ;
   font-family: 'Oleo Script', cursive;
 }
 

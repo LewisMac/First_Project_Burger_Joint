@@ -2,7 +2,7 @@
 <html>
 <head>
 
-<link href="https://fonts.googleapis.com/css?family=Courgette|Oleo+Script" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Courgette|Oleo+Script" rel="stylesheet">
 
   <title>Burger Comparison</title>
 
@@ -10,14 +10,42 @@
 
   <link rel="stylesheet" type="text/css" href="/styles/forms.css">
   <link rel="stylesheet" type="text/css" href="/styles/structure.css">
+  <link rel="stylesheet" type="text/css" href="/styles/style.css">
 
 </head>
 <body>
+  <div class="main">
+    <div>
+      <div class="navigate">
 
+       <a href="/"> Home </a>
+      <hr/>
+       <a href="/burgers"> Burgers </a>
+      <hr/>
+       <a href="/eateries"> Eateries </a>
+      <hr/>
+       <a href="/deals"> Deals </a>
+      </div>
+      <li><a><h3>All deals by day</h3></a>
+        <ul>
+          <li> <a href="/Monday"> Monday </a></li>
+          <li> <a href="/Tuesday"> Tuesday </a></li>
+          <li> <a href="/Wednesday"> Wednesday </a></li>
+          <li> <a href="/Thursday"> Thursday </a></li>
+          <li> <a href="/Friday"> Friday </a></li>
+          <li> <a href="/Saturday"> Saturday </a></li>
+          <li> <a href="/Sunday"> Sunday </a></li>
+        </ul>
+      </li>
 
-<%= yield %>
-
-<p><a href="/burgers/new">Build your own Burger</a></p> 
-<p><a href="/eateries/new">Build your own Eatery</a></p> 
+    </div>
+    <div>
+      <%= yield %>
+    </div>
+    <div>
+      <p><a href="/burgers/new">Build your own Burger</a></p> 
+      <p><a href="/eateries/new">Build your own Eatery</a></p> 
+    </div>
+  </div>
 </body>
 </html>
